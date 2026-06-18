@@ -1,4 +1,4 @@
-local CONFIG_FILE_PATH = "Mods/GothicPlus/Scripts/config.ini"
+local CONFIG_FILE_PATH = "Mods/GothicPlus/config.ini"
 
 local Defaults = {
     health_regen_enabled = true,

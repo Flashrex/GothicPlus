@@ -15,7 +15,7 @@ regen on sleep — planned).
 
 ## Configuration
 
-Settings live in `Mods\GothicPlus\Scripts\config.ini`. Edit the values, save the file, then restart
+Settings live in `Mods\GothicPlus\config.ini`. Edit the values, save the file, then restart
 the game to apply the changes.
 
 | Setting | Description | Default |
