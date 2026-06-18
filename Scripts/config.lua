@@ -1,10 +1,11 @@
-local CONFIG_FILE_PATH = "Mods/GothicPlus/config.ini"
+local CONFIG_FILE_PATH = "ue4ss/Mods/GothicPlus/config.ini"
 
 local Defaults = {
     health_regen_enabled = true,
     health_per_tick = 1,
     mana_regen_enabled = true,
     mana_per_tick = 1,
+    sleep_remove_recently_slept_penalty = true,
 }
 
 local function ParseValue(RawValue)
@@ -40,6 +41,7 @@ local function LoadConfigFile(Path)
         end
     end
 
+    print("[GothicPlus] Loaded config from config.ini")
     File:close()
     return Values
 end
