@@ -8,10 +8,11 @@ Regen.IntervalMs = 1000  -- shared tick interval for both health and mana
 local HealthAttributeSetClass = StaticFindObject(nil, nil, "/Script/G1R.AttributeSet_Health")
 local ManaAttributeSetClass   = StaticFindObject(nil, nil, "/Script/G1R.AttributeSet_Mana")
 
-local function RegenAttribute(AttributeSet, FieldName, MaxFieldName, Amount, RepNotifyName)
+local function RegenAttribute(AttributeSet, FieldName, MaxFieldName, PercentPerTick, RepNotifyName)
     local OldBase = AttributeSet[FieldName].BaseValue
     local OldCurrent = AttributeSet[FieldName].CurrentValue
     local Max = AttributeSet[MaxFieldName].CurrentValue
+    local Amount = Max * (PercentPerTick / 100)
     local New = math.min(OldCurrent + Amount, Max)
 
     AttributeSet[FieldName].BaseValue = New
@@ -42,14 +43,14 @@ function Regen.Tick()
         if Config.health_regen_enabled then
             local HealthSet = FindAttributeSet(ASC, HealthAttributeSetClass)
             if HealthSet then
-                RegenAttribute(HealthSet, "Health", "MaxHealth", Config.health_per_tick, "OnRep_Health")
+                RegenAttribute(HealthSet, "Health", "MaxHealth", Config.health_percent_per_tick, "OnRep_Health")
             end
         end
 
         if Config.mana_regen_enabled then
             local ManaSet = FindAttributeSet(ASC, ManaAttributeSetClass)
             if ManaSet then
-                RegenAttribute(ManaSet, "Mana", "MaxMana", Config.mana_per_tick, "OnRep_Mana")
+                RegenAttribute(ManaSet, "Mana", "MaxMana", Config.mana_percent_per_tick, "OnRep_Mana")
             end
         end
     end)

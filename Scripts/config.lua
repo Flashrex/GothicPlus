@@ -2,9 +2,9 @@ local CONFIG_FILE_PATH = "ue4ss/Mods/GothicPlus/config.ini"
 
 local Defaults = {
     health_regen_enabled = true,
-    health_per_tick = 1,
+    health_percent_per_tick = 1,
     mana_regen_enabled = true,
-    mana_per_tick = 1,
+    mana_percent_per_tick = 1,
     sleep_remove_recently_slept_penalty = true,
 }
 
