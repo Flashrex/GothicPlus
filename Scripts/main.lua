@@ -2,7 +2,6 @@ local Config = require("config")
 local PlayerModule = require("modules.player")
 local Regen = require("modules.regen")
 local Sleep = require("modules.sleep")
-local Locations = require("modules.locations")
 
 local RegenEnabled = Config.health_regen_enabled or Config.mana_regen_enabled
 
@@ -34,13 +33,6 @@ end)
 if RegenEnabled then
     LoopAsync(Regen.IntervalMs, function()
         ExecuteInGameThread(Regen.Tick)
-        return false
-    end)
-end
-
-if Config.map_location_labels_enabled then
-    LoopAsync(Locations.PollIntervalMs, function()
-        ExecuteInGameThread(Locations.Tick)
         return false
     end)
 end
