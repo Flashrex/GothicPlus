@@ -2,6 +2,7 @@ local Config = require("config")
 local PlayerModule = require("modules.player")
 local Regen = require("modules.regen")
 local Sleep = require("modules.sleep")
+local XPDisplay = require("modules.xp_display")
 
 local RegenEnabled = Config.health_regen_enabled or Config.mana_regen_enabled
 
@@ -35,6 +36,10 @@ if RegenEnabled then
         ExecuteInGameThread(Regen.Tick)
         return false
     end)
+end
+
+if Config.xp_full_numbers_enabled then
+    XPDisplay.Start()
 end
 
 print("[GothicPlus] Mod loaded!")

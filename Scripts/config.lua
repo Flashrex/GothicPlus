@@ -6,6 +6,7 @@ local Defaults = {
     mana_regen_enabled = true,
     mana_percent_per_tick = 1,
     sleep_remove_recently_slept_penalty = true,
+    xp_full_numbers_enabled = true,
 }
 
 local function ParseValue(RawValue)
